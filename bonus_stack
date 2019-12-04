@@ -1,0 +1,49 @@
+.model small
+.stack 100h
+.data
+
+
+.code
+main proc
+    
+    mov ah,1
+    int 21h
+    mov ah , 0
+    push ax
+           
+    mov ah,1
+    int 21h
+    mov ah , 0
+    push ax
+    
+    
+    mov ah,1
+    int 21h
+    mov ah , 0
+    push ax
+    
+    mov cx,0
+    
+    pop dx
+    sub dx , 48
+    add cx,dx
+           
+    pop dx
+    sub dx , 48
+    mov ax,dx
+    mov bx , 10
+    mul bx
+    add cx , ax
+    
+    pop dx
+    sub dx , 48
+    mov ax,dx
+    mov bx , 100
+    mul bx
+    add cx , ax
+    
+    end:
+    mov ah , 4ch
+    int 21h
+    main endp
+end main
