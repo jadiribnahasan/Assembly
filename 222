@@ -1,0 +1,46 @@
+.model small
+.stack 100h
+.data
+
+
+.code
+main proc
+    
+    input:
+    mov ah,1
+    int 21h
+    cmp al , 13
+    je endinput
+    and ah , 0
+    ;add ax , 48
+    push ax
+    jmp input
+    
+    endinput:
+    
+    
+    mov cx,0
+     
+    
+    mov bx,1
+    loop:
+    pop dx
+    cmp dx , 57
+    jg end
+    sub dx , 48
+    mov ax,dx
+    mul bx
+    add cx , ax
+    mov ax,bx
+    mov dx,10
+    mul dx
+    mov bx,ax
+    jmp loop
+    
+    
+    
+    end:
+    mov ah , 4ch
+    int 21h
+    main endp
+end main
